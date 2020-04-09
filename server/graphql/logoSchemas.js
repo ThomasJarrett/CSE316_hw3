@@ -25,6 +25,21 @@ var logoType = new GraphQLObjectType({
             fontSize: {
                 type: GraphQLInt
             },
+            backgroundColor: {
+                type: GraphQLString
+            },
+            borderColor:{
+                type: GraphQLString
+            },
+            borderRadius:{
+                type: GraphQLInt
+            },
+            padding: {
+                type: GraphQLInt
+            },
+            margin: {
+                type: GraphQLInt
+            },
             lastUpdate: {
                 type: GraphQLDate
             }
@@ -81,6 +96,21 @@ var mutation = new GraphQLObjectType({
                     },
                     fontSize: {
                         type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    backgroundColor: {
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    borderColor:{
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    borderRadius:{
+                        type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    padding: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    margin: {
+                        type: new GraphQLNonNull(GraphQLInt)
                     }
                 },
                 resolve: function (root, params) {
@@ -106,6 +136,21 @@ var mutation = new GraphQLObjectType({
                         type: new GraphQLNonNull(GraphQLString)
                     },
                     fontSize: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    backgroundColor: {
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    borderColor:{
+                        type: new GraphQLNonNull(GraphQLString)
+                    },
+                    borderRadius:{
+                        type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    padding: {
+                        type: new GraphQLNonNull(GraphQLInt)
+                    },
+                    margin: {
                         type: new GraphQLNonNull(GraphQLInt)
                     }
                 },
