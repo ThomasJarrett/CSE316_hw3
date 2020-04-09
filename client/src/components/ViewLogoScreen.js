@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import '../App.css';
 import gql from 'graphql-tag';
 import { Query, Mutation } from 'react-apollo';
+import LogoDisplay from './LogoDisplay';
 
 const GET_LOGO = gql`
     query logo($logoId: String) {
@@ -13,6 +14,7 @@ const GET_LOGO = gql`
             fontSize
             backgroundColor
             borderColor
+            borderWidth
             borderRadius
             padding
             margin
@@ -33,6 +35,7 @@ class ViewLogoScreen extends Component {
 
     render() {
         return (
+            
             <Query pollInterval={500} query={GET_LOGO} variables={{ logoId: this.props.match.params.id }}>
                 {({ loading, error, data }) => {
                     if (loading) return 'Loading...';
@@ -55,11 +58,13 @@ class ViewLogoScreen extends Component {
                                         <dd>{data.logo.color}</dd>
                                         <dt>Font Size:</dt>
                                         <dd>{data.logo.fontSize}</dd>
-                                        <dt>BackgroundColor:</dt>
+                                        <dt>Background Color:</dt>
                                         <dd>{data.logo.backgroundColor}</dd>
-                                        <dt>BorderColor:</dt>
+                                        <dt>Border Color:</dt>
                                         <dd>{data.logo.borderColor}</dd>
-                                        <dt>BorderRadius:</dt>
+                                        <dt>Border Width</dt>
+                                        <dd>{data.logo.borderWidth}</dd>
+                                        <dt>Border Radius:</dt>
                                         <dd>{data.logo.borderRadius}</dd>
                                         <dt>Padding:</dt>
                                         <dd>{data.logo.padding}</dd>
@@ -87,10 +92,13 @@ class ViewLogoScreen extends Component {
                                     </Mutation>
                                 </div>
                             </div>
+                            <LogoDisplay logo={data.logo}/>
                         </div>
                     );
                 }}
             </Query>
+            
+            
         );
     }
 }
